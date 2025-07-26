@@ -1,37 +1,33 @@
-import java.util.*;
-class Main{
+class Person{
+    int Age;
+    String Name;
+
+    Person(String Name,int Age){
+        this.Name = Name;
+        this.Age = Age;
+    }
+    void personalinfo(){
+        System.out.println("Name: "+Name);
+        System.out.println("Age: "+Age);
+    }
+}
+class Student extends Person{
+    String Grade;
+    int StudentID;
+    Student(String Name,int Age,String Grade,int StudentID){
+        super(Name,Age);
+        this.Grade=Grade;
+        this.StudentID=StudentID;
+    }
+    void studentinfo(){
+        super.personalinfo();
+        System.out.println("Grade: "+Grade);
+        System.out.println("Student ID:"+StudentID);
+   }
+}
+public class Main {
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int sum = 0;
-        String results;
-        System.out.print("Enter the number of subjects; ");
-        int noOfSubjects = sc.nextInt();
-        System.out.println("Enter marks for each subject (0 to 100);");
-        int [] marks = new int[noOfSubjects];
-
-        for(int i=0;i<noOfSubjects;i++){
-            System.out.println("Subject " + (i+1) + ": ");
-         marks[i] = sc.nextInt();
-        }
-
-        for(int i = 0; i <noOfSubjects; i++) {
-            sum += marks[i];}
-
-            int percentage = sum / noOfSubjects;
-            System.out.println("Your percentage: " + percentage + "%");
-        
-        if(percentage>=90){
-                results = "You Scored an A, ";
-        }else if(percentage>=80){
-            results = "You Scored a B";
-        }else if (percentage>=70){
-            results = "You Scored a C";
-        }else if(percentage>=60){
-            results = "You Scored a D"; 
-        }else{
-            results = "You Scored an F";
-        }
-
-        System.out.println(results);
+        Student student1=new Student("Anna",15,"Grade 10",2314);
+        student1.studentinfo();
     }
 }
